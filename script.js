@@ -200,15 +200,11 @@ function commentPost(postId) {
 function visualizzazione_pagina_interesse(){
     var postContainer = document.getElementById('post-container');
     var postInteresse = document.getElementById('panello-interesse');
-    if (postContainer.style.display === 'none') {
-        postContainer.style.display = 'block';
-        postInteresse.style.display = 'none';
-    } else {
-        postContainer.style.display = 'none';
-        postInteresse.style.display = 'block';
-    }
 
-        const posts = [
+    postContainer.style.display = 'none';
+    postInteresse.style.display = 'block';
+
+    const posts = [
         {
             id: 1,
             user: "Mario Rossi",
@@ -235,13 +231,12 @@ function visualizzazione_pagina_interesse(){
         }
     ];
 
-    const postContainer1 = document.getElementById("panello_interesse");
+    const postContainer1 = document.querySelector(".pannello_post");
 
     posts.forEach(post => {
-
         const postElement = document.createElement('div');
         postElement.innerHTML = `
-        <div class="post col-md-6 offset-md-3">
+        <div class="post col-md-6 offset-md-3 pannello_post">
             <div class="post-header">
                 <img src="${post.profileImage}" alt="${post.user}'s profile picture">
                 <div class="user-info">
@@ -258,8 +253,7 @@ function visualizzazione_pagina_interesse(){
                 <button onclick="sharePost(${post.id})"><i class="fas fa-share"></i> Share</button>
             </div>
         </div>
-    
-    `;
+        `;
 
         postContainer1.appendChild(postElement);
     });
