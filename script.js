@@ -199,10 +199,24 @@ function commentPost(postId) {
 
 function visualizzazione_pagina_interesse(){
     var postContainer = document.getElementById('post-container');
-    var postInteresse = document.getElementById('panello-interesse');
+    var containerInteresse = document.getElementById('container-interesse');
 
     postContainer.style.display = 'none';
-    postInteresse.style.display = 'block';
+    containerInteresse.style.display = 'block';
+
+    // visualizzazione pannello dei post
+
+    var panelloPost = document.querySelector('.pannello_post');
+    var panelloGruppi = document.querySelector('.pannello_gruppi');
+    var panelloEventi = document.querySelector('.pannello_eventi');
+
+    panelloPost.style.display = 'block';
+    panelloGruppi.style.display = 'none';
+    panelloEventi.style.display = 'none';
+
+
+
+    // creazione dei post
 
     const posts = [
         {
@@ -257,4 +271,46 @@ function visualizzazione_pagina_interesse(){
 
         postContainer1.appendChild(postElement);
     });
+
+    // creazione dei gruppi
+
+
+    // creazione degli eventi
+
+
+}
+
+
+function post_panel(){
+    var panelloPost = document.querySelector('.pannello_post');
+    var panelloGruppi = document.querySelector('.pannello_gruppi');
+    var panelloEventi = document.querySelector('.pannello_eventi');
+
+    panelloPost.style.display = 'block';
+    panelloGruppi.style.display = 'none';
+    panelloEventi.style.display = 'none';
+
+    // il contenuto dei posto é giá stato caricato in visualizzazione_pagina_interesse()
+}
+
+function gruppi_panel(){
+    var panelloPost = document.querySelector('.pannello_post');
+    var panelloGruppi = document.querySelector('.pannello_gruppi');
+    var panelloEventi = document.querySelector('.pannello_eventi');
+
+    panelloPost.style.display = 'none';
+    panelloGruppi.style.display = 'block';
+    panelloEventi.style.display = 'none';
+
+}
+
+function eventi_panel(){
+    var panelloPost = document.querySelector('.pannello_post');
+    var panelloGruppi = document.querySelector('.pannello_gruppi');
+    var panelloEventi = document.querySelector('.pannello_eventi');
+
+    panelloPost.style.display = 'none';
+    panelloGruppi.style.display = 'none';
+    panelloEventi.style.display = 'block';
+
 }

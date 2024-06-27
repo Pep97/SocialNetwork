@@ -395,7 +395,7 @@ main{
       }
     }
 
-    #panello-interesse{
+    #container-interesse{
       margin-left: 230px;
 
       .container_info_interesse{
@@ -421,6 +421,7 @@ main{
           }
     
         }
+
       }
 
 
