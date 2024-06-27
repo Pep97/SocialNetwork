@@ -1,0 +1,529 @@
+:root {
+    font-size: 18px;
+    --strong-orange: #FC4100;
+    --medium-blue: #2C4E80;
+    --black: rgb(34, 33, 33);
+    --gray: gray;
+    --light-white: #EEEEEE;
+    --light-gray: #d8d6d6;
+    --forest-green: #016236;
+    --emerald-green: #25ee90;
+
+  }
+
+body {
+    margin:0;
+    padding:0;
+    font-family: 'Chakra Petch', 'sans-serif';
+    background-color: var(--black);
+}
+
+/* navabar */
+
+.navbar-custom {
+    background-color: var(--black);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: grey 0.2px solid !important;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+
+
+
+
+    .a_logo {
+        margin-left: 20px;
+        font-size: 22px;
+        display: flex;
+        align-items: center;
+    }
+
+    .search-bar .input-container {
+        display: flex;
+    }
+    
+    .search_bar{
+        width: 100%;
+    }
+
+    .search-div{
+      width: 100%;
+      max-width: 500px !important;
+      margin-right: 15px;
+      margin-left: 15px;
+    }
+    
+    
+    .search-bar ::placeholder {
+        color: #757575;
+        opacity: 1;
+    }
+    
+    .search-input {
+        background: var(--light-white);
+        color: #212121;
+        vertical-align: middle;
+        font-size: 16px;
+        line-height: 2;
+        padding: 2px 0px;
+        width: 100%;
+        max-width: 1000px !important;
+        border: 0;
+        outline: none;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    
+    .fa-search {
+        color: black !important;
+        font-size: 20px;
+    }
+    
+    .search-submit {
+        background: var(--light-white);
+        color: #FFFFFF;
+        vertical-align: middle;
+        padding: 0 15px;
+        border: 0;
+        outline: none;
+        cursor: pointer;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+    
+    .search-submit:hover {
+        background: var(--light-gray);
+    }
+    
+    .auth-buttons {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+    }
+
+    @media screen and (max-width: 688px) {
+      .search-div{
+        display: none;
+      }
+    }
+}
+
+
+
+.accedi_button{
+  color: var(--emerald-green) !important; 
+  margin-right: 10px;
+  border: 1px solid var(--emerald-green);
+  padding: 7px 11px;
+  border-radius: 20px;
+  
+}
+
+.accedi_alert{
+  .form-control:focus {
+    border-color: var(--medium-blue) !important;
+    outline: 1px solid var(--medium-blue) !important;
+    box-shadow: 0px 0px 5px var(--medium-blue); 
+  }
+  .button_accedi_alert{
+    background-color: var(--black);
+    color: white;
+  }
+  .testo_vai_registrati{
+    color: var(--black);
+  }
+  
+}
+
+.registrati_button{
+  color: var(--black) !important; 
+  background-color: var(--emerald-green) !important;
+  padding: 7px 11px;
+  border-radius: 20px;
+}
+
+.registrati_alert{
+  .form-control:focus {
+    border-color: var(--medium-blue) !important;
+    outline: 1px solid var(--medium-blue) !important;
+    box-shadow: 0px 0px 5px var(--medium-blue); 
+  }
+  .button_registrati_alert{
+    background-color: var(--black);
+    color: white;
+  }
+  .testo_vai_accedi{
+    color: var(--black);
+  }
+}
+
+/* main */
+
+main{
+  padding-top: 86px;
+
+    .sidebar{
+      background-color: var(--black) !important;
+      border-right: grey 0.2px solid !important;
+      margin-left: 10px;
+      height: 100vh;
+      position: fixed;
+      z-index: 1;
+
+      /* Scroll bar - Don't touch */
+      max-height: 90vh; /* Set the maximum height to 100% of the viewport height */
+      overflow-y: auto; /* Enable vertical scrolling */
+
+      .nav-item{
+        background-color: var(--gray) !important;
+        border-radius: 5px;
+
+        .home_link{
+          color: var(--light-gray);
+        }
+        .home_link:hover{
+          color: var(--light-gray);
+        }
+
+        i{
+          margin-right: 5px;
+        }
+      }
+
+
+
+      .divider {
+          height: 2px;
+          background-color: #dee2e6;
+          margin: 20px 0;
+      }
+
+      .interestsContainer{
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .button{
+        width: 100% !important;
+        max-width: 100% !important;
+        background-color: var(--gray) !important;
+        height: 40px;
+        border-radius: 5px;
+        padding-top: 6px;
+        align-items: center;
+        justify-content: center;
+
+      }
+
+      .button:hover{
+        cursor: pointer !important;
+      }
+      .mainInterestLink{
+          background-color: var(--gray) !important;
+          border-radius: 5px;
+          color: var(--light-gray);
+          margin-left: 20px;
+
+          i{
+            margin-left: 90px;
+          }
+
+
+
+
+      }
+
+      .hiddenLinks{
+        display: flex;
+        flex-direction: column;
+        display: none;
+        margin-top: 10px;
+        a{
+            color: white;
+            padding-left: 20px;
+
+
+        }
+        a:hover{
+          color: var(--forest-green);
+          background-color: var(--light-gray);
+          border-radius: 5px;
+        }
+      }
+    
+
+
+      footer{
+        a {
+          text-decoration: none;
+          color: #6c757d;
+        }
+  
+        a:hover {
+          text-decoration: underline;
+        }
+
+        span{
+          font-size: 13px;
+        }
+      }
+      
+
+    }
+
+    #post-container{
+      margin-left: 230px;
+
+
+      .post {
+        background-color: #ffffff;
+        border: 1px solid #e3e6ea;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        padding: 15px;
+      }
+      
+      .post img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+      
+      .post-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .offset-md-3{
+        max-width: 632px;
+
+      }
+      
+      .post-header img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      
+      .post-header .user-info {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .post-header .user-info .username {
+        font-weight: bold;
+      }
+      
+      .post-header .user-info .post-date {
+        font-size: 0.9em;
+        color: gray;
+      }
+      .post-footer {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 15px;
+      }
+      .post-footer button {
+        background: none;
+        border: none;
+        color: gray;
+        font-size: 1.2em;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+      
+      .post-footer button:hover {
+        color: #007bff;
+        transform: translateY(-2px);
+        cursor: pointer;
+      }
+      
+      .post-footer button:focus {
+        outline: none;
+        color: #0056b3;
+        transform: translateY(-2px);
+      }
+      
+      .post-footer button:active {
+        transform: translateY(0);
+      }
+      
+      .post-footer i {
+        margin-right: 5px;
+      }
+      
+      .post-footer .like-btn, .post-footer .dislike-btn, .post-footer .share-btn {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      
+      .like-btn {
+        color: #28a745;
+      }
+      
+      .like-btn:hover {
+        color: #218838;
+      }
+      
+      .dislike-btn {
+        color: #dc3545;
+      }
+      
+      .dislike-btn:hover {
+        color: #c82333;
+      }
+      
+      .share-btn {
+        color: #17a2b8;
+      }
+      
+      .share-btn:hover {
+        color: #138496;
+      }
+      .comment-btn {
+        color: #ffc107;
+      }
+      
+      .comment-btn:hover {
+        color: #e0a800;
+      }
+    }
+
+    #panello-interesse{
+      margin-left: 230px;
+      color: white;
+
+
+      .post {
+        background-color: #ffffff;
+        border: 1px solid #e3e6ea;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        padding: 15px;
+      }
+      
+      .post img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+      
+      .post-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .offset-md-3{
+        max-width: 632px;
+
+      }
+      
+      .post-header img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      
+      .post-header .user-info {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .post-header .user-info .username {
+        font-weight: bold;
+      }
+      
+      .post-header .user-info .post-date {
+        font-size: 0.9em;
+        color: gray;
+      }
+      .post-footer {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 15px;
+      }
+      .post-footer button {
+        background: none;
+        border: none;
+        color: gray;
+        font-size: 1.2em;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+      
+      .post-footer button:hover {
+        color: #007bff;
+        transform: translateY(-2px);
+        cursor: pointer;
+      }
+      
+      .post-footer button:focus {
+        outline: none;
+        color: #0056b3;
+        transform: translateY(-2px);
+      }
+      
+      .post-footer button:active {
+        transform: translateY(0);
+      }
+      
+      .post-footer i {
+        margin-right: 5px;
+      }
+      
+      .post-footer .like-btn, .post-footer .dislike-btn, .post-footer .share-btn {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      
+      .like-btn {
+        color: #28a745;
+      }
+      
+      .like-btn:hover {
+        color: #218838;
+      }
+      
+      .dislike-btn {
+        color: #dc3545;
+      }
+      
+      .dislike-btn:hover {
+        color: #c82333;
+      }
+      
+      .share-btn {
+        color: #17a2b8;
+      }
+      
+      .share-btn:hover {
+        color: #138496;
+      }
+      .comment-btn {
+        color: #ffc107;
+      }
+      
+      .comment-btn:hover {
+        color: #e0a800;
+      }
+    }
+
+
+
+
+    
+
+
+
+
+
+}
+
