@@ -56,7 +56,7 @@
 
         <a class=" a_logo" href="index.html" style="color: white;">
             <img src="img/logo.png" alt="logo Image" width="45" height="35" style="margin-right: 10px;">
-            EduStream
+            CodeNet
         </a>
         <div class="search-div">
             <form role="search" method="get" action="/" class="search-bar">
@@ -79,7 +79,6 @@
     <main class="mt5 mb5 pt5 pb5 d-flex">
 
         <!-- menu laterale -->
-
         <nav class="bg-light sidebar d-flex flex-column justify-content-between p-3">
             <ul class="nav flex-column">
                 <li class="nav-item">
@@ -91,11 +90,11 @@
 
             <div class="interestsContainer">
                 <div class="button">
-                    <a href="#" class="mainInterestLink">Interessi                    
-                        <i class="fas fa-chevron-down arrowIcon1"></i>
+                    <a href="#" class="mainInterestLink">                    
+                        <i class="fas fa-chevron-down arrowIcon1"></i> Interessi
                     </a>
                 </div>
-                <div class="hiddenLinks">
+                <div class="hiddenLinks" style="display: none;">
                     <a href="#" onclick="visualizzazione_pagina_interesse()">HTML</a>
                     <a href="#">CSS</a>
                     <a href="#">Javascript</a>
@@ -121,8 +120,10 @@
 
         </nav>
 
-        <!-- panello principale -->
+        <!-- div per accentrare panello principale siccome c'é z-index in "menu laterale" -->
+        <div class="space"></div>
 
+        <!-- panello principale -->
         <div class="p-4 w-100 visualizzazione_post" id="post-container">
 
             <!-- VISUALIZZAZIONE DEI POST GRAZIE A JAVASCRIPT-->
@@ -148,6 +149,8 @@
             <div class="pannello_eventi"></div> <!-- check javascript -->
             
         </div>
+
+
 
     </main>
 

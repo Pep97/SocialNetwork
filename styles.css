@@ -227,14 +227,19 @@ main{
           border-radius: 5px;
           color: var(--light-gray);
           margin-left: 20px;
+          padding-right: 100px;
 
           i{
-            margin-left: 90px;
+            margin-right: 5px;
           }
 
 
 
 
+      }
+
+      .mainInterestLink:hover {
+        text-decoration: none !important;
       }
 
       .hiddenLinks{
@@ -258,6 +263,7 @@ main{
 
 
       footer{
+        border-radius: 5px;
         a {
           text-decoration: none;
           color: #6c757d;
@@ -275,16 +281,24 @@ main{
 
     }
 
+    .space{
+      width: 400px;
+
+    }
     #post-container{
-      margin-left: 230px;
 
 
       .post {
         background-color: #ffffff;
         border: 1px solid #e3e6ea;
         border-radius: 8px;
-        margin-bottom: 20px;
+        /* margin-bottom: 20px; */
         padding: 15px;
+
+        margin: 0 auto 20px;
+        width: 90%;
+
+        
       }
       
       .post img {
@@ -546,14 +560,6 @@ main{
 
 
     }
-
-
-
-
-    
-
-
-
 
 
 }

@@ -1,0 +1,40 @@
+        <nav class="bg-light sidebar d-flex flex-column justify-content-between p-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active home_link" href="index.html"><i class="fas fa-home"></i> Home</a>                
+                </li>
+
+                <div class="divider"></div>
+            </ul>
+
+            <div class="interestsContainer">
+                <div class="button">
+                    <a href="#" class="mainInterestLink">                    
+                        <i class="fas fa-chevron-down arrowIcon1"></i> Interessi
+                    </a>
+                </div>
+                <div class="hiddenLinks" style="display: none;">
+                    <a href="#" onclick="visualizzazione_pagina_interesse()">HTML</a>
+                    <a href="#">CSS</a>
+                    <a href="#">Javascript</a>
+                    <a href="#">Java</a>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div style="height: 100%;">
+                <div class="divider"></div>
+                <footer class="footer mt-auto py-3 bg-light">
+                    <div class="container">
+                        <div class="footer-links">
+                            <p><strong>Risorse</strong></p>
+                            <p><a href="#">Chi siamo</a></p>
+                            <p><a href="#">Assistenza e Contatti</a></p>
+                            <p><a href="#">Privacy Policy</a></p>
+                        </div>
+                        <span class="text-muted">©2024 Tutti i diritti riservati</span>
+                    </div>
+                </footer>
+            </div>
+
+        </nav>
