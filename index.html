@@ -50,6 +50,7 @@
 </head>
 <body>
 
+    <!-- custom navbar superiore -->
 
     <div class="navbar-custom pt-3 pb-3 justify-content-between">
 
@@ -58,6 +59,8 @@
             <img src="img/logo.png" alt="logo Image" width="45" height="35" style="margin-right: 10px;">
             CodeNet
         </a>
+
+        <!-- barra ricerca desktop -->
         <div class="search-div">
             <form role="search" method="get" action="/" class="search-bar">
                 <div class="input-container">
@@ -67,16 +70,43 @@
             </form>
         </div>
 
+            
+        <!--div search cellulare-->
+        <div class="search-cellulare">
+            <form role="search" method="get" action="/" class="search-bar">
+                <div class="input-container">
+                    <button type="button" id="search-button" class="search-submit"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+
+
+        <!--barra di ricerca per cellulare-->
+        <div class="search-panel" id="search-panel">
+            <div class="input-container">
+                <button type="button" id="back-button" class="back-icon"><i class="fa fa-arrow-left"></i></button>
+                <button type="submit" class="search-submit" name="submit"><i class="fa fa-search"></i></button>
+                <input type="search" class="search-input" value="" name="s" placeholder="Cerca" />
+            </div>
+            <div class="container-search">
+            </div>
+        </div>
+
+
         <div class="auth-buttons">
             <span class="navbar-text"><a href="#" class="accedi_button" onclick="accedi()">Accedi</a></span>
             <a class="registrati_button" role="button" href="#" onclick="registrati()">Registrati</a>
         </div>
 
     </div>
+
+
+
+
     
 
 
-    <main class="mt5 mb5 pt5 pb5 d-flex">
+    <main class="main mt5 mb5 pt5 pb5 d-flex">
 
         <!-- menu laterale -->
         <nav class="bg-light sidebar d-flex flex-column justify-content-between p-3">
@@ -150,7 +180,7 @@
             
         </div>
 
-        
+
 
 
 

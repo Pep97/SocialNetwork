@@ -90,8 +90,34 @@ function registrati(){
     });
 }
 
-// gestione menu laterale
+// Gestione barra di ricerca per cellulare
+document.querySelector('#search-button').addEventListener('click', function () {
+    var main = document.querySelector('.main');
+    main.style.display = 'none';
+    
+    var navbar = document.querySelector('.navbar-custom');
+    navbar.style.display = 'none';
 
+    var searchPanel = document.querySelector('#search-panel');
+    searchPanel.style.display = 'flex';
+
+    var containerSearch = document.querySelector('.container-search');
+    containerSearch.style.display = 'block';
+});
+
+document.getElementById('back-button').addEventListener('click', function () {
+    var main = document.getElementsByTagName('main')[0];
+    var navbar = document.getElementsByClassName('navbar-custom');
+    for (var i = 0; i < navbar.length; i++) {
+        navbar[i].style.display = 'flex';
+    }
+    main.style.display = 'flex;'
+    document.getElementById('search-panel').style.display = 'none';
+});
+
+
+
+// gestione menu laterale
 
 document.getElementsByClassName('mainInterestLink')[0].addEventListener('click', function(event) {
     event.preventDefault(); // Prevent the default anchor action
@@ -117,6 +143,7 @@ document.getElementsByClassName('mainInterestLink')[0].addEventListener('click',
 
 
 //VISUALIZZAZIONE dei post - Panello principale
+
 document.addEventListener("DOMContentLoaded", function () {
     const posts = [
         {
@@ -162,10 +189,10 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>${post.content}</p>
             <img src="${post.imageUrl}" alt="Post image">
             <div class="post-footer">
-                <button onclick="likePost(${post.id})"><i class="fas fa-thumbs-up"></i> Like</button>
-                <button onclick="dislikePost(${post.id})"><i class="fas fa-thumbs-down"></i> Dislike</button>
-                <button class="comment-btn" onclick="commentPost(${post.id})"><i class="fas fa-comment"></i> Comment</button>
-                <button onclick="sharePost(${post.id})"><i class="fas fa-share"></i> Share</button>
+                <button onclick="registrati()"><i class="fas fa-thumbs-up"></i> Like</button>
+                <button onclick="registrati()"><i class="fas fa-thumbs-down"></i> Dislike</button>
+                <button class="comment-btn" onclick="registrati()"><i class="fas fa-comment"></i> Comment</button>
+                <button onclick="registrati()"><i class="fas fa-share"></i> Share</button>
             </div>
         </div>
     
@@ -261,10 +288,10 @@ function visualizzazione_pagina_interesse(){
             <p>${post.content}</p>
             <img src="${post.imageUrl}" alt="Post image">
             <div class="post-footer">
-                <button onclick="likePost(${post.id})"><i class="fas fa-thumbs-up"></i> Like</button>
-                <button onclick="dislikePost(${post.id})"><i class="fas fa-thumbs-down"></i> Dislike</button>
-                <button class="comment-btn" onclick="commentPost(${post.id})"><i class="fas fa-comment"></i> Comment</button>
-                <button onclick="sharePost(${post.id})"><i class="fas fa-share"></i> Share</button>
+                <button onclick="registrati()"><i class="fas fa-thumbs-up"></i> Like</button>
+                <button onclick="registrati()"><i class="fas fa-thumbs-down"></i> Dislike</button>
+                <button class="comment-btn" onclick="registrati()"><i class="fas fa-comment"></i> Comment</button>
+                <button onclick="registrati()"><i class="fas fa-share"></i> Share</button>
             </div>
         </div>
         `;
@@ -312,5 +339,82 @@ function eventi_panel(){
     panelloPost.style.display = 'none';
     panelloGruppi.style.display = 'none';
     panelloEventi.style.display = 'block';
+
+}
+
+// generazione di un post quando l'utente raggiunge 80% della pagina 
+
+window.addEventListener('scroll', () => {
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const currentScroll = window.scrollY;
+    const threshold = totalHeight * 0.8;
+  
+    if (currentScroll >= threshold) {
+      generatePost(); // Call your function to generate a post
+
+    }
+  });
+  
+function generatePost() {
+
+console.log('Generating a post...'); // Placeholder for actual post generation logic
+
+// post generato
+
+const posts = [
+    {
+        id: 1,
+        user: "Mario Rossi",
+        content: "Questo e' il mio post",
+        imageUrl: "https://via.placeholder.com/600x400",
+        profileImage: "https://via.placeholder.com/40",
+        postDate: "2024-06-26"
+    },
+    {
+        id: 2,
+        user: "Samatha Verdi",
+        content: "Questo e' il mio post",
+        imageUrl: "https://via.placeholder.com/600x400",
+        profileImage: "https://via.placeholder.com/40",
+        postDate: "2024-06-25"
+    },
+    {
+        id: 3,
+        user: "Barack Obama",
+        content: "Questo e' il mio post",
+        imageUrl: "https://via.placeholder.com/600x400",
+        profileImage: "https://via.placeholder.com/40",
+        postDate: "2024-06-24"
+    }
+];
+
+const postContainer = document.getElementById("post-container");
+
+posts.forEach(post => {
+
+    const postElement = document.createElement('div');
+    postElement.innerHTML = `
+    <div class="post col-md-6 offset-md-3">
+        <div class="post-header">
+            <img src="${post.profileImage}" alt="${post.user}'s profile picture">
+            <div class="user-info">
+            <span class="username">${post.user}</span>
+            <span class="post-date">${post.postDate}</span>
+            </div>
+        </div>
+        <p>${post.content}</p>
+        <img src="${post.imageUrl}" alt="Post image">
+        <div class="post-footer">
+            <button onclick="likePost(${post.id})"><i class="fas fa-thumbs-up"></i> Like</button>
+            <button onclick="dislikePost(${post.id})"><i class="fas fa-thumbs-down"></i> Dislike</button>
+            <button class="comment-btn" onclick="commentPost(${post.id})"><i class="fas fa-comment"></i> Comment</button>
+            <button onclick="sharePost(${post.id})"><i class="fas fa-share"></i> Share</button>
+        </div>
+    </div>
+
+`;
+
+    postContainer.appendChild(postElement);
+});
 
 }
