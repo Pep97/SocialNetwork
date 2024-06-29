@@ -1,4 +1,15 @@
 
+// click humburger menu nella custom-navbar
+document.querySelector('.hamburger-menu').addEventListener('click', function () {
+    var sidebar = document.querySelector('.sidebar');
+    if (sidebar.style.zIndex === '-1'){
+        sidebar.style.zIndex = '2';
+    } else {
+        sidebar.style.zIndex = '-1';
+    }
+
+});
+
 
 // alert pop-up accedi - registrati
 
@@ -91,29 +102,45 @@ function registrati(){
 }
 
 // Gestione barra di ricerca per cellulare
-document.querySelector('#search-button').addEventListener('click', function () {
-    var main = document.querySelector('.main');
-    main.style.display = 'none';
+// document.querySelector('#search-button').addEventListener('click', function () {
+//     var main = document.querySelector('.main');
+//     main.style.display = 'none';
     
-    var navbar = document.querySelector('.navbar-custom');
-    navbar.style.display = 'none';
+//     var navbar = document.querySelector('.navbar-custom');
+//     navbar.style.display = 'none';
 
-    var searchPanel = document.querySelector('#search-panel');
-    searchPanel.style.display = 'flex';
+//     var searchPanel = document.querySelector('#search-panel');
+//     searchPanel.style.display = 'flex';
 
-    var containerSearch = document.querySelector('.container-search');
-    containerSearch.style.display = 'block';
+//     var containerSearch = document.querySelector('.container-search');
+//     containerSearch.style.display = 'block';
+// });
+
+document.querySelector('#search-button').addEventListener('click', function () {
+
+    var searchPanel = document.getElementById('search-panel');
+    searchPanel.style.zIndex = '1000';
+    document.body.style.overflow = 'hidden'; // Disable scrolling
+
 });
 
 document.getElementById('back-button').addEventListener('click', function () {
-    var main = document.getElementsByTagName('main')[0];
-    var navbar = document.getElementsByClassName('navbar-custom');
-    for (var i = 0; i < navbar.length; i++) {
-        navbar[i].style.display = 'flex';
-    }
-    main.style.display = 'flex;'
-    document.getElementById('search-panel').style.display = 'none';
+    var searchPanel = document.getElementById('search-panel');
+    searchPanel.style.zIndex = '-1';
+    document.body.style.overflow = 'visible';
 });
+
+// Funzione per gestire la z-index del pannello di ricerca in base alla dimensione della finestra
+function adjustSearchPanelZIndex() {
+    const searchPanel = document.querySelector('.search-panel');
+    if (window.innerWidth > 688) {
+      searchPanel.style.zIndex = '-1';
+    } 
+  }
+
+// controllo della dimensione della finestra per chiamare adjustSearchPanelZIndex
+window.addEventListener('resize', adjustSearchPanelZIndex);
+
 
 
 

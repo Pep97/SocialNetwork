@@ -50,10 +50,23 @@
 </head>
 <body>
 
-    <!-- custom navbar superiore -->
+    <!--barra di ricerca per cellulare-->
+    <div class="search-panel" id="search-panel">
+        <div class="input-container">
+            <button type="button" id="back-button" class="back-icon"><i class="fa fa-arrow-left"></i></button>
+            <button type="submit" class="search-submit" name="submit"><i class="fa fa-search"></i></button>
+            <input type="search" class="search-input" value="" name="s" placeholder="Cerca" />
+        </div>
+        <div class="container-search">
+        </div>
+    </div>
 
+    <!-- custom navbar superiore -->
     <div class="navbar-custom pt-3 pb-3 justify-content-between">
 
+        <button class="hamburger-menu">
+            <i class="material-icons">menu</i>
+        </button>
 
         <a class=" a_logo" href="index.html" style="color: white;">
             <img src="img/logo.png" alt="logo Image" width="45" height="35" style="margin-right: 10px;">
@@ -81,25 +94,12 @@
         </div>
 
 
-        <!--barra di ricerca per cellulare-->
-        <div class="search-panel" id="search-panel">
-            <div class="input-container">
-                <button type="button" id="back-button" class="back-icon"><i class="fa fa-arrow-left"></i></button>
-                <button type="submit" class="search-submit" name="submit"><i class="fa fa-search"></i></button>
-                <input type="search" class="search-input" value="" name="s" placeholder="Cerca" />
-            </div>
-            <div class="container-search">
-            </div>
-        </div>
-
-
         <div class="auth-buttons">
             <span class="navbar-text"><a href="#" class="accedi_button" onclick="accedi()">Accedi</a></span>
             <a class="registrati_button" role="button" href="#" onclick="registrati()">Registrati</a>
         </div>
 
     </div>
-
 
 
 
@@ -111,6 +111,13 @@
         <!-- menu laterale -->
         <nav class="bg-light sidebar d-flex flex-column justify-content-between p-3">
             <ul class="nav flex-column">
+                <div class="auth-buttons">
+                    <span class="navbar-text"><a href="#" class="accedi_button" onclick="accedi()">Accedi</a></span>
+                    <a class="registrati_button" role="button" href="#" onclick="registrati()">Registrati</a>
+                </div>
+
+                <div class="divider divider1"></div>
+
                 <li class="nav-item">
                     <a class="nav-link active home_link" href="index.html"><i class="fas fa-home"></i> Home</a>                
                 </li>
