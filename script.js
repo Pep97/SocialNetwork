@@ -2,12 +2,15 @@
 // click humburger menu nella custom-navbar
 document.querySelector('.hamburger-menu').addEventListener('click', function () {
     var sidebar = document.querySelector('.sidebar');
-    if (sidebar.style.zIndex === '-1'){
+    var zIndex = window.getComputedStyle(sidebar).getPropertyValue('z-index');
+    // perché zIndex viene preso cosí? perché se si usa sidebar.style.zIndex non funziona
+    // e al primo click ti ritorna una stringa vuota.
+    
+    if (zIndex === '-1') {
         sidebar.style.zIndex = '2';
     } else {
         sidebar.style.zIndex = '-1';
     }
-
 });
 
 
@@ -133,7 +136,7 @@ document.getElementById('back-button').addEventListener('click', function () {
 // Funzione per gestire la z-index del pannello di ricerca in base alla dimensione della finestra
 function adjustSearchPanelZIndex() {
     const searchPanel = document.querySelector('.search-panel');
-    if (window.innerWidth > 688) {
+    if (window.innerWidth > 768) {
       searchPanel.style.zIndex = '-1';
     } 
   }
@@ -216,10 +219,10 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>${post.content}</p>
             <img src="${post.imageUrl}" alt="Post image">
             <div class="post-footer">
-                <button onclick="registrati()"><i class="fas fa-thumbs-up"></i> Like</button>
-                <button onclick="registrati()"><i class="fas fa-thumbs-down"></i> Dislike</button>
-                <button class="comment-btn" onclick="registrati()"><i class="fas fa-comment"></i> Comment</button>
-                <button onclick="registrati()"><i class="fas fa-share"></i> Share</button>
+                <button onclick="registrati()"><i class="fas fa-thumbs-up"></i>23</button>
+                <button onclick="registrati()"><i class="fas fa-thumbs-down"></i>2</button>
+                <button class="comment-btn" onclick="registrati()"><i class="fas fa-comment"></i>3</button>
+                <button onclick="registrati()"><i class="fas fa-share"></i>1</button>
             </div>
         </div>
     
@@ -315,10 +318,10 @@ function visualizzazione_pagina_interesse(){
             <p>${post.content}</p>
             <img src="${post.imageUrl}" alt="Post image">
             <div class="post-footer">
-                <button onclick="registrati()"><i class="fas fa-thumbs-up"></i> Like</button>
-                <button onclick="registrati()"><i class="fas fa-thumbs-down"></i> Dislike</button>
-                <button class="comment-btn" onclick="registrati()"><i class="fas fa-comment"></i> Comment</button>
-                <button onclick="registrati()"><i class="fas fa-share"></i> Share</button>
+                <button onclick="registrati()"><i class="fas fa-thumbs-up"></i>23</button>
+                <button onclick="registrati()"><i class="fas fa-thumbs-down"></i>2</button>
+                <button class="comment-btn" onclick="registrati()"><i class="fas fa-comment"></i>3</button>
+                <button onclick="registrati()"><i class="fas fa-share"></i>1</button>
             </div>
         </div>
         `;
@@ -375,49 +378,53 @@ window.addEventListener('scroll', () => {
     const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
     const currentScroll = window.scrollY;
     const threshold = totalHeight * 0.8;
-  
+
     if (currentScroll >= threshold) {
-      generatePost(); // Call your function to generate a post
+        // console.log('User reached 80% of the page');
+        const pannelloPrincipale = document.getElementById("post-container");
+        const panelloInteressi = document.getElementById("container-interesse");
 
+        if (pannelloPrincipale.style.display !== 'none') {
+            generaPost(pannelloPrincipale);
+        } else if (panelloInteressi.style.display !== 'none') {
+            generaPost(panelloInteressi);
+        }
     }
-  });
-  
-function generatePost() {
+});
 
-console.log('Generating a post...'); // Placeholder for actual post generation logic
+function generaPost(pannello){
 
-// post generato
+    // console.log('Generating a post...');
+    // post generato
 
-const posts = [
-    {
-        id: 1,
-        user: "Mario Rossi",
-        content: "Questo e' il mio post",
-        imageUrl: "https://via.placeholder.com/600x400",
-        profileImage: "https://via.placeholder.com/40",
-        postDate: "2024-06-26"
-    },
-    {
-        id: 2,
-        user: "Samatha Verdi",
-        content: "Questo e' il mio post",
-        imageUrl: "https://via.placeholder.com/600x400",
-        profileImage: "https://via.placeholder.com/40",
-        postDate: "2024-06-25"
-    },
-    {
-        id: 3,
-        user: "Barack Obama",
-        content: "Questo e' il mio post",
-        imageUrl: "https://via.placeholder.com/600x400",
-        profileImage: "https://via.placeholder.com/40",
-        postDate: "2024-06-24"
-    }
-];
+    const posts = [
+        {
+            id: 1,
+            user: "Mario Rossi",
+            content: "Questo e' il mio post",
+            imageUrl: "https://via.placeholder.com/600x400",
+            profileImage: "https://via.placeholder.com/40",
+            postDate: "2024-06-26"
+        },
+        {
+            id: 2,
+            user: "Samatha Verdi",
+            content: "Questo e' il mio post",
+            imageUrl: "https://via.placeholder.com/600x400",
+            profileImage: "https://via.placeholder.com/40",
+            postDate: "2024-06-25"
+        },
+        {
+            id: 3,
+            user: "Barack Obama",
+            content: "Questo e' il mio post",
+            imageUrl: "https://via.placeholder.com/600x400",
+            profileImage: "https://via.placeholder.com/40",
+            postDate: "2024-06-24"
+        }
+    ];
 
-const postContainer = document.getElementById("post-container");
-
-posts.forEach(post => {
+    posts.forEach(post => {
 
     const postElement = document.createElement('div');
     postElement.innerHTML = `
@@ -432,16 +439,15 @@ posts.forEach(post => {
         <p>${post.content}</p>
         <img src="${post.imageUrl}" alt="Post image">
         <div class="post-footer">
-            <button onclick="likePost(${post.id})"><i class="fas fa-thumbs-up"></i> Like</button>
-            <button onclick="dislikePost(${post.id})"><i class="fas fa-thumbs-down"></i> Dislike</button>
-            <button class="comment-btn" onclick="commentPost(${post.id})"><i class="fas fa-comment"></i> Comment</button>
-            <button onclick="sharePost(${post.id})"><i class="fas fa-share"></i> Share</button>
+                <button onclick="registrati()"><i class="fas fa-thumbs-up"></i>23</button>
+                <button onclick="registrati()"><i class="fas fa-thumbs-down"></i>2</button>
+                <button class="comment-btn" onclick="registrati()"><i class="fas fa-comment"></i>3</button>
+                <button onclick="registrati()"><i class="fas fa-share"></i>1</button>
         </div>
     </div>
 
-`;
+    `;
 
-    postContainer.appendChild(postElement);
-});
-
+    pannello.appendChild(postElement);
+    });
 }
