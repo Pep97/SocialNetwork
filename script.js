@@ -227,8 +227,12 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
     
     `;
+    // aggiunta postElement per visualizzare il post intero
+    postElement.addEventListener('click', function(){
+        callViewSinglePost(post);
+    });
 
-        postContainer.appendChild(postElement);
+    postContainer.appendChild(postElement);
     });
 });
 
@@ -325,6 +329,10 @@ function visualizzazione_pagina_interesse(){
             </div>
         </div>
         `;
+        // aggiunta postContainer1 per visualizzare il post intero
+        postElement.addEventListener('click', function(){
+            callViewSinglePost(post);
+        });
 
         postContainer1.appendChild(postElement);
     });
@@ -372,6 +380,7 @@ function eventi_panel(){
 
 }
 
+
 // generazione di un post quando l'utente raggiunge 80% della pagina 
 
 window.addEventListener('scroll', () => {
@@ -387,7 +396,19 @@ window.addEventListener('scroll', () => {
         if (pannelloPrincipale.style.display !== 'none') {
             generaPost(pannelloPrincipale);
         } else if (panelloInteressi.style.display !== 'none') {
-            generaPost(panelloInteressi);
+
+            const pannelloPost = document.querySelector('.pannello_post');
+            const pannelloGruppi = document.querySelector('.pannello_gruppi');
+            const pannelloEventi = document.querySelector('.pannello_eventi');
+
+            if (pannelloPost.style.display !== 'none') {
+                generaPost(pannelloPost);
+            } else if (pannelloGruppi.style.display !== 'none') {
+                // generaGruppi(pannelloGruppi);
+            } else if (pannelloEventi.style.display !== 'none') {
+                // generaEventi(pannelloEventi);
+            }
+
         }
     }
 });
@@ -448,6 +469,79 @@ function generaPost(pannello){
 
     `;
 
+    postElement.addEventListener('click', function(){
+        callViewSinglePost(post);
+    });
+
     pannello.appendChild(postElement);
     });
+}
+
+//-------------------------------------------
+
+// VISUALIZZAZIONE di un singolo post
+
+let currentPanel = null;
+
+function callViewSinglePost(post) {
+    const postContainer = document.getElementById('post-container');
+    const postContainerInteresse = document.getElementById('container-interesse');
+
+    // Capisci il pannello in cui si trova l'utente
+    if (postContainer.style.display !== 'none') {
+        currentPanel = postContainer;
+        viewSinglePost(post, postContainer);
+    } else if (postContainerInteresse.style.display !== 'none') {
+        currentPanel = postContainerInteresse;
+        viewSinglePost(post, postContainerInteresse);
+    }
+}
+
+function viewSinglePost(post, pannello) {
+
+    // fai scattare la funzione nel pannello specifico
+    const containerPostInterno = document.getElementById('container-post-interno');
+
+    //pulizia del contenitore del post interno
+    containerPostInterno.innerHTML = '';
+
+    const postElement = document.createElement('div');
+    postElement.innerHTML = `
+    <div class="post col-md-6 offset-md-3">
+        <div class="post-header">
+        <div id="back-arrow" onclick="goBackToPosts()"><i class="fas fa-arrow-left"></i></div>
+            <img src="${post.profileImage}" alt="${post.user}'s profile picture">
+            <div class="user-info">
+            <span class="username">${post.user}</span>
+            <span class="post-date">${post.postDate}</span>
+            </div>
+        </div>
+        <p>${post.content}</p>
+        <img src="${post.imageUrl}" alt="Post image">
+        <div class="post-footer">
+                <button onclick="registrati()"><i class="fas fa-thumbs-up"></i>23</button>
+                <button onclick="registrati()"><i class="fas fa-thumbs-down"></i>2</button>
+                <button class="comment-btn" onclick="registrati()"><i class="fas fa-comment"></i>3</button>
+                <button onclick="registrati()"><i class="fas fa-share"></i>1</button>
+        </div>
+        
+    </div>
+    `;
+    //aggiunta del post al contenitore del post interno
+    containerPostInterno.appendChild(postElement);
+
+    // nascondi il pannello principale e mostra il pannello interno
+    pannello.style.display = 'none';
+    containerPostInterno.style.display = 'block';
+
+}
+
+function goBackToPosts() {
+
+    const containerPostInterno = document.getElementById('container-post-interno');
+
+    if (containerPostInterno.style.display !== 'none') {
+        containerPostInterno.style.display = 'none';
+        currentPanel.style.display = 'block';
+    }
 }
