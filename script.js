@@ -136,7 +136,7 @@ document.getElementById('back-button').addEventListener('click', function () {
 // Funzione per gestire la z-index del pannello di ricerca in base alla dimensione della finestra
 function adjustSearchPanelZIndex() {
     const searchPanel = document.querySelector('.search-panel');
-    if (window.innerWidth > 688) {
+    if (window.innerWidth > 768) {
       searchPanel.style.zIndex = '-1';
     } 
   }

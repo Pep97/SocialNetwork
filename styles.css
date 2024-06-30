@@ -232,13 +232,13 @@ body {
         margin-right: 20px;
     }
 
-    @media screen and (max-width: 688px) {
+    @media screen and (max-width: 768px) {
       .search-div{
         display: none;
       }
     }
 
-    @media screen and (min-width: 688px) {
+    @media screen and (min-width: 768px) {
       .search-cellulare {
           display: none;
           
@@ -446,7 +446,7 @@ main{
 
     }
 
-    @media screen and (max-width: 688px) {
+    @media screen and (max-width: 768px) {
       .sidebar{
         z-index: -1;
       }
