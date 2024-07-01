@@ -542,11 +542,12 @@ main{
         cursor: pointer;
       }
       
-      .post-footer button:focus {
+      /* CSS per quando l'utente clicca un bottone, come ad esempio like */
+      /* .post-footer button:focus {
         outline: none;
         color: #0056b3;
         transform: translateY(-2px);
-      }
+      } */
       
       .post-footer button:active {
         transform: translateY(0);
@@ -709,11 +710,12 @@ main{
           cursor: pointer;
         }
         
-        .post-footer button:focus {
+        /* CSS per quando l'utente clicca un bottone, come ad esempio like */
+        /* .post-footer button:focus {
           outline: none;
           color: #0056b3;
           transform: translateY(-2px);
-        }
+        } */
         
         .post-footer button:active {
           transform: translateY(0);
@@ -852,12 +854,6 @@ main{
       color: var(--light-white);
       transform: translateY(-2px);
       cursor: pointer;
-    }
-    
-    .post-footer button:focus {
-        outline: none;
-        color: #0056b3;
-        transform: translateY(-2px);
     }
 
     .post-footer button:active {

@@ -219,42 +219,59 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>${post.content}</p>
             <img src="${post.imageUrl}" alt="Post image">
             <div class="post-footer">
-                <button onclick="registrati()"><i class="fas fa-thumbs-up"></i>23</button>
-                <button onclick="registrati()"><i class="fas fa-thumbs-down"></i>2</button>
-                <button class="comment-btn" onclick="registrati()"><i class="fas fa-comment"></i>3</button>
-                <button onclick="registrati()"><i class="fas fa-share"></i>1</button>
+                <button><i class="fas fa-thumbs-up"></i>23</button>
+                <button><i class="fas fa-thumbs-down"></i>2</button>
+                <button class="comment-btn"><i class="fas fa-comment"></i>3</button>
+                <button><i class="fas fa-share"></i>1</button>
             </div>
         </div>
-    
     `;
-    // aggiunta postElement per visualizzare il post intero
-    postElement.addEventListener('click', function(){
-        callViewSinglePost(post);
+
+    // evenListener per gestire i click nel post
+    postElement.addEventListener('click', function(event){
+
+        const button = event.target.closest('button');
+        const likeClicked = button && button.querySelector('.fa-thumbs-up');
+
+        if (likeClicked) {
+            registrati();
+            return;
+        }
+
+        const dislikeClicked = button && button.querySelector('.fa-thumbs-down');
+
+        if (dislikeClicked) {
+            registrati();
+            return;
+        };
+        
+        const commentClicked = button && button.querySelector('.fa-comment');
+
+        if (commentClicked) {
+            registrati();
+            return;
+        };
+
+        const shareClicked = button && button.querySelector('.fa-share');
+
+        if (shareClicked) {
+            registrati();
+            return;
+        };
+
+        const postElement = event.target.closest('.post');
+
+        if (postElement) {
+            callViewSinglePost(post);
+            
+        }
+
     });
 
+    // aggiunta postElement per visualizzare il post intero
     postContainer.appendChild(postElement);
     });
 });
-
-function likePost(postId) {
-    console.log(`Liked post with id: ${postId}`);
-    // Aggiungere la logica 
-}
-
-function dislikePost(postId) {
-    console.log(`Disliked post with id: ${postId}`);
-    // Aggiungere la logica
-}
-
-function sharePost(postId) {
-    console.log(`Shared post with id: ${postId}`);
-    // Aggiungere la logica 
-}
-
-function commentPost(postId) {
-    console.log(`Commented on post with id: ${postId}`);
-    // Aggiungerela logica
-}
 
 //VISUALIZZAZIONE dei post - Panello Interesse
 
@@ -311,7 +328,7 @@ function visualizzazione_pagina_interesse(){
     posts.forEach(post => {
         const postElement = document.createElement('div');
         postElement.innerHTML = `
-        <div class="post col-md-6 offset-md-3 pannello_post">
+        <div class="post col-md-6 offset-md-3">
             <div class="post-header">
                 <img src="${post.profileImage}" alt="${post.user}'s profile picture">
                 <div class="user-info">
@@ -322,17 +339,54 @@ function visualizzazione_pagina_interesse(){
             <p>${post.content}</p>
             <img src="${post.imageUrl}" alt="Post image">
             <div class="post-footer">
-                <button onclick="registrati()"><i class="fas fa-thumbs-up"></i>23</button>
-                <button onclick="registrati()"><i class="fas fa-thumbs-down"></i>2</button>
-                <button class="comment-btn" onclick="registrati()"><i class="fas fa-comment"></i>3</button>
-                <button onclick="registrati()"><i class="fas fa-share"></i>1</button>
+                <button><i class="fas fa-thumbs-up"></i>23</button>
+                <button><i class="fas fa-thumbs-down"></i>2</button>
+                <button class="comment-btn"><i class="fas fa-comment"></i>3</button>
+                <button><i class="fas fa-share"></i>1</button>
             </div>
         </div>
-        `;
-        // aggiunta postContainer1 per visualizzare il post intero
-        postElement.addEventListener('click', function(){
+    `;
+
+    // evenListener per gestire i click nel post
+    postElement.addEventListener('click', function(event){
+
+        const button = event.target.closest('button');
+        const likeClicked = button && button.querySelector('.fa-thumbs-up');
+
+        if (likeClicked) {
+            registrati();
+            return;
+        }
+
+        const dislikeClicked = button && button.querySelector('.fa-thumbs-down');
+
+        if (dislikeClicked) {
+            registrati();
+            return;
+        };
+        
+        const commentClicked = button && button.querySelector('.fa-comment');
+
+        if (commentClicked) {
+            registrati();
+            return;
+        };
+
+        const shareClicked = button && button.querySelector('.fa-share');
+
+        if (shareClicked) {
+            registrati();
+            return;
+        };
+
+        const postElement = event.target.closest('.post');
+
+        if (postElement) {
             callViewSinglePost(post);
-        });
+            
+        }
+
+    });
 
         postContainer1.appendChild(postElement);
     });
@@ -344,7 +398,6 @@ function visualizzazione_pagina_interesse(){
 
 
 }
-
 
 function post_panel(){
     var panelloPost = document.querySelector('.pannello_post');
@@ -379,7 +432,6 @@ function eventi_panel(){
     panelloEventi.style.display = 'block';
 
 }
-
 
 // generazione di un post quando l'utente raggiunge 80% della pagina 
 
@@ -460,17 +512,53 @@ function generaPost(pannello){
         <p>${post.content}</p>
         <img src="${post.imageUrl}" alt="Post image">
         <div class="post-footer">
-                <button onclick="registrati()"><i class="fas fa-thumbs-up"></i>23</button>
-                <button onclick="registrati()"><i class="fas fa-thumbs-down"></i>2</button>
-                <button class="comment-btn" onclick="registrati()"><i class="fas fa-comment"></i>3</button>
-                <button onclick="registrati()"><i class="fas fa-share"></i>1</button>
+            <button><i class="fas fa-thumbs-up"></i>23</button>
+            <button><i class="fas fa-thumbs-down"></i>2</button>
+            <button class="comment-btn"><i class="fas fa-comment"></i>3</button>
+            <button><i class="fas fa-share"></i>1</button>
         </div>
     </div>
-
     `;
 
-    postElement.addEventListener('click', function(){
-        callViewSinglePost(post);
+    // evenListener per gestire i click nel post
+    postElement.addEventListener('click', function(event){
+
+        const button = event.target.closest('button');
+        const likeClicked = button && button.querySelector('.fa-thumbs-up');
+
+        if (likeClicked) {
+            registrati();
+            return;
+        }
+
+        const dislikeClicked = button && button.querySelector('.fa-thumbs-down');
+
+        if (dislikeClicked) {
+            registrati();
+            return;
+        };
+        
+        const commentClicked = button && button.querySelector('.fa-comment');
+
+        if (commentClicked) {
+            registrati();
+            return;
+        };
+
+        const shareClicked = button && button.querySelector('.fa-share');
+
+        if (shareClicked) {
+            registrati();
+            return;
+        };
+
+        const postElement = event.target.closest('.post');
+
+        if (postElement) {
+            callViewSinglePost(post);
+            
+        }
+
     });
 
     pannello.appendChild(postElement);
