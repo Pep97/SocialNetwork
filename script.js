@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
             imageUrl: "https://via.placeholder.com/600x400",
             profileImage: "https://via.placeholder.com/40",
             postDate: "2024-06-24"
-        }
+        },
     ];
 
     const postContainer = document.getElementById("post-container");
@@ -395,8 +395,6 @@ function visualizzazione_pagina_interesse(){
 
 
     // creazione degli eventi
-
-
 }
 
 function post_panel(){
@@ -593,6 +591,24 @@ function viewSinglePost(post, pannello) {
     //pulizia del contenitore del post interno
     containerPostInterno.innerHTML = '';
 
+    //creazione di commenti placeholder
+    const comments = [
+        {
+            id: 1,
+            user: "Giulia Bianchi",
+            content: "Questo è il mio commento.",
+            profileImage: "https://via.placeholder.com/40",
+            commentDate: "2024-06-27"
+        },
+        {
+            id: 2,
+            user: "Marco Neri",
+            content: "Sono d'accordo con te!",
+            profileImage: "https://via.placeholder.com/40",
+            commentDate: "2024-06-27"
+        },
+    ];
+
     const postElement = document.createElement('div');
     postElement.innerHTML = `
     <div class="post col-md-6 offset-md-3">
@@ -612,9 +628,35 @@ function viewSinglePost(post, pannello) {
                 <button class="comment-btn" onclick="registrati()"><i class="fas fa-comment"></i>3</button>
                 <button onclick="registrati()"><i class="fas fa-share"></i>1</button>
         </div>
-        
+        <div class="post-comment mt-2">
+            <form class="form-group">
+                <textarea class="textarea" rows="3" placeholder="Scrivi un commento..."></textarea>
+                <div class="bottoni-comment">
+                    <button type="button" class="cancel-btn" onclick="cancelComment()">Cancel</button>
+                    <button type="submit" class="commenta-btn">Commenta</button>
+                </div>
+            </form>
+        </div>
+        <div>
+         <div class="comments-section">
+
+         
+            ${comments.map(comment => `
+            <div class="comment">
+                <img src="${comment.profileImage}" alt="${comment.user}'s profile picture" class="comment-profile-img">
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <span class="comment-username">${comment.user}</span>
+                        <span class="comment-date">${comment.commentDate}</span>
+                    </div>
+                    <p>${comment.content}</p>
+                </div>
+            </div>
+            `).join('')}
+        </div>
     </div>
     `;
+
     //aggiunta del post al contenitore del post interno
     containerPostInterno.appendChild(postElement);
 
@@ -622,6 +664,10 @@ function viewSinglePost(post, pannello) {
     pannello.style.display = 'none';
     containerPostInterno.style.display = 'block';
 
+}
+
+function cancelComment() {
+    document.querySelector('.post-comment form textarea').value = '';
 }
 
 function goBackToPosts() {
