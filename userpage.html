@@ -128,14 +128,18 @@
                         <i class="fas fa-chevron-down arrowIcon1"></i> Interessi
                     </a>
                 </div>
-                <div class="hiddenLinks" style="display: none;">
-                    <a href="#" onclick="visualizzazione_pagina_interesse('html')">HTML</a>
-                    <a href="#" onclick="visualizzazione_pagina_interesse('css')">CSS</a>
-                    <a href="#" onclick="visualizzazione_pagina_interesse('javascript')">Javascript</a>
-                    <a href="#" onclick="visualizzazione_pagina_interesse('Java')">Java</a>
-                </div>
+                <form action="post">
+                    <select name="" id="">
+                        <!-- <div class="hiddenLinks" style="display: none;"> -->
+                            <a href="#" onclick="visualizzazione_pagina_interesse('HTML')">HTML</a>
+                            <a href="#" onclick="visualizzazione_pagina_interesse('CSS')">CSS</a>
+                            <a href="#" onclick="visualizzazione_pagina_interesse('Javascript')">Javascript</a>
+                            <a href="#" onclick="visualizzazione_pagina_interesse('Java')">Java</a>
+                        <!-- </div> -->
 
+                    </select>
 
+                </form>
             </div>
 
             <!-- Footer -->
@@ -163,14 +167,48 @@
         <div class="p-4 w-100 visualizzazione_post" id="post-container">
 
             <!-- VISUALIZZAZIONE DEI POST GRAZIE A JAVASCRIPT-->
-            
+            <!--pannello per il form inserimento post nuovo -->
+            <div class='container-insert-post w-100'>
+                <div class='post-insert'>
+                    <h2 class="">Inserisci Post</h2>
+                    <form method='post' action='/'>
+                        <select class='form-select' aria-label='Default select example'>
+
+                            <option selected>Interessi</option>
+
+                            <option value='html'>HTML</option>
+
+                            <option value='css'>CSS</option>
+
+                            <option value='java'>JAVA</option>
+
+                            <option value='javascript'>Javascript</option>
+
+                            <option value='bootstrap'>Bootstrap</option>
+
+                        </select>
+                        <div class='form-group'>
+
+                            <label for='descrizione'>Descrizione:</label><br />
+                            <textarea class='form-control' id='descrizione' rows='3' placeholder='Aggiungi un nuovo post...'></textarea>
+
+                        </div>
+                        <br />
+                        <button type='submit' id='btn-posta' class=''>Posta</button>
+
+                    </form>
+                </div>
+            </div>
+
+
+
         </div>
 
         <!-- panello Interesse -->
         <div class="w-100 visualizzazione_interesse" id="container-interesse" style="display: none;">
 
             <div class="container container_info_interesse">
-                <h1 class="interesse-attivo"></h1>
+                <h1>HTML</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores fugit necessitatibus veritatis vitae temporibus assumenda natus beatae quas corporis quasi. Voluptas eaque a</p>
                 <ul class="container">
                     <li><a href="#" onclick="post_panel()">Post</a></li>
@@ -182,8 +220,6 @@
                 <div class="pannello_gruppi"></div> <!-- check javascript -->
                 <div class="pannello_eventi"></div> <!-- check javascript -->
             </div>
-
-            <div class="post"></div>
 
             
         </div>

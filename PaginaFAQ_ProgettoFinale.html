@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="it" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="bitCamp">
+
+    <title>FAQ - EduStream</title>
+
+    <link rel="icon" href="img/logo.png" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="styles.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+    <div class="navbar-custom pt-3 pb-3 justify-content-between">
+        <a class="a_logo" href="index.html" style="color: white;">
+            <img src="img/logo.png" alt="logo Image" width="45" height="35" style="margin-right: 10px;">
+            EduStream
+        </a>
+        <div class="search-div">
+            <form role="search" method="get" action="/" class="search-bar">
+                <div class="input-container">
+                    <button type="submit" class="search-submit" name="submit"><i class="fa fa-search"></i></button>
+                    <input type="search" class="search-input" value="" name="s" placeholder="Cerca" />
+                </div>
+            </form>
+        </div>
+        <div class="auth-buttons">
+            <span class="navbar-text"><a href="#" class="accedi_button" onclick="accedi()">Accedi</a></span>
+            <a class="registrati_button" role="button" href="#" onclick="registrati()">Registrati</a>
+        </div>
+    </div>
+
+    <main class="mt5 mb5 pt5 pb5 d-flex">
+        <nav class="bg-light sidebar d-flex flex-column justify-content-between p-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link home_link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <div class="divider"></div>
+            </ul>
+            <div class="interestsContainer">
+                <div class="button">
+                    <a href="#" class="mainInterestLink">
+                        Interessi
+                        <i class="fas fa-chevron-down arrowIcon1"></i>
+                    </a>
+                </div>
+                <div class="hiddenLinks">
+                    <a href="#" onclick="visualizzazione_pagina_interesse()">HTML</a>
+                    <a href="#">CSS</a>
+                    <a href="#">Javascript</a>
+                    <a href="#">Java</a>
+                </div>
+            </div>
+            <div style="height: 100%;">
+                <div class="divider"></div>
+                <footer class="footer mt-auto py-3 bg-light">
+                    <div class="container">
+                        <div class="footer-links">
+                            <p><strong>Risorse</strong></p>
+                            <p><a href="#">Chi siamo</a></p>
+                            <p><a href="#">Assistenza e Contatti</a></p>
+                            <p><a href="#">Privacy Policy</a></p>
+                        </div>
+                        <span class="text-muted">©2024 Tutti i diritti riservati</span>
+                    </div>
+                </footer>
+            </div>
+        </nav>
+
+        <div class="p-4 w-100" id="faq-container">
+            <h1 class="text-white">FAQ</h1>
+            <div class="faq-item">
+                <button class="faq-question" type="button">
+                    Come posso creare un account?
+                </button>
+                <div class="faq-answer">
+                    <p>Per creare un account, clicca su "Registrati" nella barra di navigazione e compila il modulo di registrazione con le tue informazioni personali.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" type="button">
+                    Come posso recuperare la mia password?
+                </button>
+                <div class="faq-answer">
+                    <p>Se hai dimenticato la tua password, clicca su "Accedi" e poi su "Password dimenticata". Segui le istruzioni per recuperare la tua password.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" type="button">
+                    Come posso contattare l'assistenza?
+                </button>
+                <div class="faq-answer">
+                    <p>Puoi contattare l'assistenza cliccando su "Assistenza e Contatti" nel menù laterale "Risorse". Saremo felici di aiutarti!</p>
+                </div>
+            </div>
+
+            <!--Card per assistenza -->
+
+            <div class="card-container">
+                <div class="card" onclick="location.href='assistenza_admin.html'">
+                    <div class="card-content">
+                        <h2>Assistenza Admin</h2>
+                        <p>Hai bisogno di aiuto con le funzionalità? Clicca qui per l'assistenza dedicata agli amministratori.</p>
+                    </div>
+                </div>
+                <div class="card" onclick="location.href='assistenza_user.html'">
+                    <div class="card-content">
+                        <h2>Assistenza User</h2>
+                        <p>Hai bisogno di aiuto con le funzionalità per gli utenti? Clicca qui per l'assistenza dedicata agli utenti.</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>
+
+

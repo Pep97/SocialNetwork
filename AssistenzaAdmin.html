@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Giuseppe Boinega">
+
+    <title>Assistenza Admin</title>
+
+    <!-- Favicon -->
+
+    <link rel="icon" href="img/logo.png" type="image/x-icon">
+
+    <!-- Font: Chakra Petch-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">  <!-- Link icone -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+    <!-- sezione servizi -->
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- links per header -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+
+    <!-- link per alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- CSS -->
+    <link href="styles.css" rel="stylesheet" type="text/css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+   
+</head>
+<body>
+
+
+    <div class="navbar-custom pt-3 pb-3 justify-content-between">
+
+
+        <a class=" a_logo" href="index.html" style="color: white;">
+            <img src="img/logo.png" alt="logo Image" width="45" height="35" style="margin-right: 10px;">
+            EduStream
+        </a>
+        <div class="search-div">
+            <form role="search" method="get" action="/" class="search-bar">
+                <div class="input-container">
+                    <button type="submit" class="search-submit" name="submit"><i class="fa fa-search"></i></button>
+                    <input type="search" class="search-input" value="" name="s" placeholder="Cerca" />
+                </div>
+            </form>
+        </div>
+
+        <div class="auth-buttons">
+            <span class="navbar-text"><a href="#" class="accedi_button" onclick="accedi()">Accedi</a></span>
+            <a class="registrati_button" role="button" href="#" onclick="registrati()">Registrati</a>
+        </div>
+
+    </div>
+
+    <main class="mt5 mb5 pt5 pb5 d-flex">
+        <nav class="bg-light sidebar d-flex flex-column justify-content-between p-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link home_link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <div class="divider"></div>
+            </ul>
+            <div class="interestsContainer">
+                <div class="button">
+                    <a href="#" class="mainInterestLink">
+                        Interessi
+                        <i class="fas fa-chevron-down arrowIcon1"></i>
+                    </a>
+                </div>
+                <div class="hiddenLinks">
+                    <a href="#" onclick="visualizzazione_pagina_interesse()">HTML</a>
+                    <a href="#">CSS</a>
+                    <a href="#">Javascript</a>
+                    <a href="#">Java</a>
+                </div>
+            </div>
+            <div style="height: 100%;">
+                <div class="divider"></div>
+                <footer class="footer mt-auto py-3 bg-light">
+                    <div class="container">
+                        <div class="footer-links">
+                            <p><strong>Risorse</strong></p>
+                            <p><a href="#">Chi siamo</a></p>
+                            <p><a href="#">Assistenza e Contatti</a></p>
+                            <p><a href="#">Privacy Policy</a></p>
+                        </div>
+                        <span class="text-muted">©2024 Tutti i diritti riservati</span>
+                    </div>
+                </footer>
+            </div>
+        </nav>
+
+        
+
+        <div class="p-4 w-100" id="faq-container">
+            <h1 class="text-white">Assistenza ADMIN</h1>
+            <div class="faq-item">
+                <button class="faq-question" type="button">
+                    Come iniziare
+                </button>
+                <div class="faq-answer">
+                    <p> Le basi per avviare una comunità.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" type="button">
+                    Strumenti di modernizzazione
+                </button>
+                <div class="faq-answer">
+                    <p> Panoramica e spiegazioni dei singoli strumenti di moderazione.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" type="button">
+                    Coinvolgimento della comunità
+                </button>
+                <div class="faq-answer">
+                    <p>Suggerimenti per accogliere nuovi membri e incoraggiare la partecipazione.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" type="button">
+                    Consigli e risorse
+                </button>
+                <div class="faq-answer">
+                    <p>Risposte a domande comuni, consigli di altri moderatori e altro ancora.</p>
+                </div>
+
+            </div>
+        </div>
+        
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+        <script>
+            document.querySelectorAll('.faq-question').forEach(button => {
+                button.addEventListener('click', () => {
+                    const answer = button.nextElementSibling;
+                    answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        </script>
+
+        <!-- scripts per header -->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+
+        <!-- script javascript -->
+        <script src="script.js"></script>
+
+
+</body>
+</html>
+
+

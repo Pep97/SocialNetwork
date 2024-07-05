@@ -593,6 +593,34 @@ main{
       .comment-btn:hover {
         color: #e0a800;
       }
+
+      .container-insert-post {
+        background-color: var(--black) !important;
+        .post-insert{
+        background-color: #ffffff;
+        border: 1px solid #e3e6ea;
+        border-radius: 8px;
+        /* margin-bottom: 20px; */
+        padding: 15px;
+        margin: 0 auto 20px;
+        width: 90%;}
+        #btn-posta{
+        background: none;
+        border: none;
+        color: var(--emerald-green);
+        background-color: var(--black);
+        padding: 5px 12px;
+        border-radius: 30px;
+        font-size: 1.2em;
+        transition: color 0.3s ease, transform 0.3s ease;
+        margin-bottom: 5px;}
+         #btn-posta:hover {
+            color: var(--light-white);
+            transform: translateY(-2px);
+            cursor: pointer;
+        }
+                  
+      }
     }
 
     #container-interesse{
@@ -639,6 +667,7 @@ main{
           border-radius: 8px;
           /* margin-bottom: 20px; */
           padding: 15px;
+          color: black;
   
           margin: 0 auto 20px;
           width: 90%;

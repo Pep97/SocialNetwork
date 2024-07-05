@@ -104,20 +104,6 @@ function registrati(){
     });
 }
 
-// Gestione barra di ricerca per cellulare
-// document.querySelector('#search-button').addEventListener('click', function () {
-//     var main = document.querySelector('.main');
-//     main.style.display = 'none';
-    
-//     var navbar = document.querySelector('.navbar-custom');
-//     navbar.style.display = 'none';
-
-//     var searchPanel = document.querySelector('#search-panel');
-//     searchPanel.style.display = 'flex';
-
-//     var containerSearch = document.querySelector('.container-search');
-//     containerSearch.style.display = 'block';
-// });
 
 document.querySelector('#search-button').addEventListener('click', function () {
 
@@ -275,12 +261,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //VISUALIZZAZIONE dei post - Panello Interesse
 
-function visualizzazione_pagina_interesse(){
+function visualizzazione_pagina_interesse(interesse){
+
+
     var postContainer = document.getElementById('post-container');
     var containerInteresse = document.getElementById('container-interesse');
 
+    var interesseAttivo = document.querySelector('.interesse-attivo');
+
+    // reset dei post per gli interessi
+    if (containerInteresse.style.display === 'block') {
+
+        if (interesseAttivo.textContent.toLocaleLowerCase() === interesse.toLocaleLowerCase()) {
+            console.log("Non fare nulla");
+            return; // Non fare nulla se l'interesse attivo é lo stesso -> non genera nuovi post
+        } else {
+            containerInteresse.querySelectorAll('.post').forEach(post => post.remove());
+            console.log("Reset post per interesse attivo");
+        }
+        
+    } 
+
+    // Applica interesse attivo nella pagina
+    interesseAttivo.textContent = interesse;
+    console.log("interesse attivo: " + interesseAttivo.textContent);
+
+
     postContainer.style.display = 'none';
     containerInteresse.style.display = 'block';
+
+
 
     // visualizzazione pannello dei post
 
@@ -292,8 +302,6 @@ function visualizzazione_pagina_interesse(){
     panelloGruppi.style.display = 'none';
     panelloEventi.style.display = 'none';
 
-
-
     // creazione dei post
 
     const posts = [
@@ -303,7 +311,9 @@ function visualizzazione_pagina_interesse(){
             content: "Questo e' il mio post",
             imageUrl: "https://via.placeholder.com/600x400",
             profileImage: "https://via.placeholder.com/40",
-            postDate: "2024-06-26"
+            postDate: "2024-06-26",
+            interesse: "html",
+
         },
         {
             id: 2,
@@ -311,7 +321,8 @@ function visualizzazione_pagina_interesse(){
             content: "Questo e' il mio post",
             imageUrl: "https://via.placeholder.com/600x400",
             profileImage: "https://via.placeholder.com/40",
-            postDate: "2024-06-25"
+            postDate: "2024-06-25",
+            interesse: "css"
         },
         {
             id: 3,
@@ -319,13 +330,19 @@ function visualizzazione_pagina_interesse(){
             content: "Questo e' il mio post",
             imageUrl: "https://via.placeholder.com/600x400",
             profileImage: "https://via.placeholder.com/40",
-            postDate: "2024-06-24"
+            postDate: "2024-06-24",
+            interesse: "javascript"
         }
     ];
 
     const postContainer1 = document.querySelector(".pannello_post");
 
     posts.forEach(post => {
+
+        if (post.interesse !== interesse) {
+            return;
+        }
+
         const postElement = document.createElement('div');
         postElement.innerHTML = `
         <div class="post col-md-6 offset-md-3">
@@ -345,48 +362,48 @@ function visualizzazione_pagina_interesse(){
                 <button><i class="fas fa-share"></i>1</button>
             </div>
         </div>
-    `;
+        `;
 
-    // evenListener per gestire i click nel post
-    postElement.addEventListener('click', function(event){
+        // evenListener per gestire i click nel post
+        postElement.addEventListener('click', function(event){
 
-        const button = event.target.closest('button');
-        const likeClicked = button && button.querySelector('.fa-thumbs-up');
+            const button = event.target.closest('button');
+            const likeClicked = button && button.querySelector('.fa-thumbs-up');
 
-        if (likeClicked) {
-            registrati();
-            return;
-        }
+            if (likeClicked) {
+                registrati();
+                return;
+            }
 
-        const dislikeClicked = button && button.querySelector('.fa-thumbs-down');
+            const dislikeClicked = button && button.querySelector('.fa-thumbs-down');
 
-        if (dislikeClicked) {
-            registrati();
-            return;
-        };
-        
-        const commentClicked = button && button.querySelector('.fa-comment');
-
-        if (commentClicked) {
-            registrati();
-            return;
-        };
-
-        const shareClicked = button && button.querySelector('.fa-share');
-
-        if (shareClicked) {
-            registrati();
-            return;
-        };
-
-        const postElement = event.target.closest('.post');
-
-        if (postElement) {
-            callViewSinglePost(post);
+            if (dislikeClicked) {
+                registrati();
+                return;
+            };
             
-        }
+            const commentClicked = button && button.querySelector('.fa-comment');
 
-    });
+            if (commentClicked) {
+                registrati();
+                return;
+            };
+
+            const shareClicked = button && button.querySelector('.fa-share');
+
+            if (shareClicked) {
+                registrati();
+                return;
+            };
+
+            const postElement = event.target.closest('.post');
+
+            if (postElement) {
+                callViewSinglePost(post);
+                
+            }
+
+        });
 
         postContainer1.appendChild(postElement);
     });
@@ -431,6 +448,7 @@ function eventi_panel(){
 
 }
 
+
 // generazione di un post quando l'utente raggiunge 80% della pagina 
 
 window.addEventListener('scroll', () => {
@@ -443,16 +461,20 @@ window.addEventListener('scroll', () => {
         const pannelloPrincipale = document.getElementById("post-container");
         const panelloInteressi = document.getElementById("container-interesse");
 
+
+
         if (pannelloPrincipale.style.display !== 'none') {
             generaPost(pannelloPrincipale);
         } else if (panelloInteressi.style.display !== 'none') {
 
+            const interesse = document.querySelector('.interesse-attivo').textContent.toLowerCase();
+            console.log(interesse);
             const pannelloPost = document.querySelector('.pannello_post');
             const pannelloGruppi = document.querySelector('.pannello_gruppi');
             const pannelloEventi = document.querySelector('.pannello_eventi');
 
             if (pannelloPost.style.display !== 'none') {
-                generaPost(pannelloPost);
+                generaPostInteresse(pannelloPost, interesse);
             } else if (pannelloGruppi.style.display !== 'none') {
                 // generaGruppi(pannelloGruppi);
             } else if (pannelloEventi.style.display !== 'none') {
@@ -462,6 +484,8 @@ window.addEventListener('scroll', () => {
         }
     }
 });
+
+// funzione per generare nuovi post quando l'utente scrolla
 
 function generaPost(pannello){
 
@@ -475,7 +499,8 @@ function generaPost(pannello){
             content: "Questo e' il mio post",
             imageUrl: "https://via.placeholder.com/600x400",
             profileImage: "https://via.placeholder.com/40",
-            postDate: "2024-06-26"
+            postDate: "2024-06-26",
+            interesse: "html"
         },
         {
             id: 2,
@@ -483,7 +508,8 @@ function generaPost(pannello){
             content: "Questo e' il mio post",
             imageUrl: "https://via.placeholder.com/600x400",
             profileImage: "https://via.placeholder.com/40",
-            postDate: "2024-06-25"
+            postDate: "2024-06-25",
+            interesse: "css"
         },
         {
             id: 3,
@@ -491,9 +517,12 @@ function generaPost(pannello){
             content: "Questo e' il mio post",
             imageUrl: "https://via.placeholder.com/600x400",
             profileImage: "https://via.placeholder.com/40",
-            postDate: "2024-06-24"
+            postDate: "2024-06-24",
+            interesse: "javascript"
         }
     ];
+
+
 
     posts.forEach(post => {
 
@@ -558,6 +587,118 @@ function generaPost(pannello){
         }
 
     });
+
+    pannello.appendChild(postElement);
+    });
+}
+
+// funzione per generare nuovi post quando l'utente scrolla per interesse specifico
+
+
+function generaPostInteresse(pannello, interesse){
+
+    // console.log('Generating a post...');
+    // post generato
+
+    const posts = [
+        {
+            id: 1,
+            user: "Mario Rossi",
+            content: "Questo e' il mio post",
+            imageUrl: "https://via.placeholder.com/600x400",
+            profileImage: "https://via.placeholder.com/40",
+            postDate: "2024-06-26",
+            interesse: "html"
+        },
+        {
+            id: 2,
+            user: "Samatha Verdi",
+            content: "Questo e' il mio post",
+            imageUrl: "https://via.placeholder.com/600x400",
+            profileImage: "https://via.placeholder.com/40",
+            postDate: "2024-06-25",
+            interesse: "css"
+        },
+        {
+            id: 3,
+            user: "Barack Obama",
+            content: "Questo e' il mio post",
+            imageUrl: "https://via.placeholder.com/600x400",
+            profileImage: "https://via.placeholder.com/40",
+            postDate: "2024-06-24",
+            interesse: "javascript"
+        }
+    ];
+
+
+
+    posts.forEach(post => {
+
+        if (post.interesse !== interesse) {
+            return;
+        }
+
+        const postElement = document.createElement('div');
+        postElement.innerHTML = `
+        <div class="post col-md-6 offset-md-3">
+            <div class="post-header">
+                <img src="${post.profileImage}" alt="${post.user}'s profile picture">
+                <div class="user-info">
+                <span class="username">${post.user}</span>
+                <span class="post-date">${post.postDate}</span>
+                </div>
+            </div>
+            <p>${post.content}</p>
+            <img src="${post.imageUrl}" alt="Post image">
+            <div class="post-footer">
+                <button><i class="fas fa-thumbs-up"></i>23</button>
+                <button><i class="fas fa-thumbs-down"></i>2</button>
+                <button class="comment-btn"><i class="fas fa-comment"></i>3</button>
+                <button><i class="fas fa-share"></i>1</button>
+            </div>
+        </div>
+        `;
+
+        // evenListener per gestire i click nel post
+        postElement.addEventListener('click', function(event){
+
+            const button = event.target.closest('button');
+            const likeClicked = button && button.querySelector('.fa-thumbs-up');
+
+            if (likeClicked) {
+                registrati();
+                return;
+            }
+
+            const dislikeClicked = button && button.querySelector('.fa-thumbs-down');
+
+            if (dislikeClicked) {
+                registrati();
+                return;
+            };
+            
+            const commentClicked = button && button.querySelector('.fa-comment');
+
+            if (commentClicked) {
+                registrati();
+                return;
+            };
+
+            const shareClicked = button && button.querySelector('.fa-share');
+
+            if (shareClicked) {
+                registrati();
+                return;
+            };
+
+            const postElement = event.target.closest('.post');
+
+            if (postElement) {
+                callViewSinglePost(post);
+                
+            }
+
+        });
 
     pannello.appendChild(postElement);
     });
